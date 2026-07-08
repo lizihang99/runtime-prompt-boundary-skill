@@ -115,6 +115,7 @@ Run at least three pressure cases after materially changing the skill. Include o
 
 Unless the user asks for raw prompt text only, the skill expects these artifacts:
 
+- Intent Check
 - Boundary Summary
 - Boundary Ledger
 - Runtime Prompt

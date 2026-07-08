@@ -107,17 +107,19 @@ For tie-break examples, see `references/priority-rules.md`.
    - downstream consumer
    - failure mode that matters most
    - which output shape is evidenced, if any
-2. Choose the path:
+2. Write an `Intent Check` that states what the runtime prompt is for, what it uses, what it outputs, what it must not do, and the main risk if misunderstood.
+3. If the `Intent Check` exposes material ambiguity in the goal, inputs, output, downstream consumer, or safety boundary, ask for confirmation before finalizing the prompt.
+4. Choose the path:
    - existing prompt: audit current lines before rewriting
    - new prompt: start from a boundary ledger
-3. Build a compact ledger for contested or high-risk information.
-4. Write or edit the prompt with separate sections for:
+5. Build a compact ledger for contested or high-risk information.
+6. Write or edit the prompt with separate sections for:
    - instructions
    - runtime inputs
    - output contract
    - safety, refusal, uncertainty, or escalation rules
-5. If one prompt is doing multiple incompatible jobs, split the call or stage the workflow before adding more instructions.
-6. Return the required artifacts.
+7. If one prompt is doing multiple incompatible jobs, split the call or stage the workflow before adding more instructions.
+8. Return the required artifacts.
 
 For existing prompts, preserve the current behavior boundary first. Prefer minimal diffs unless the structure itself is causing leakage or overload.
 
@@ -125,6 +127,7 @@ For existing prompts, preserve the current behavior boundary first. Prefer minim
 
 Unless the user explicitly asks for raw prompt text only, return:
 
+- `Intent Check`
 - `Boundary Summary`
 - `Boundary Ledger`
 - `Runtime Prompt`
@@ -134,7 +137,7 @@ Unless the user explicitly asks for raw prompt text only, return:
 
 Use the exact headings from `references/output-template.md`.
 
-Start with `Boundary Summary`; do not add process narration before the required artifact headings.
+Start with `Intent Check`; do not add process narration before the required artifact headings.
 
 If the user asks for raw prompt text only, still do the classification work internally before drafting.
 
@@ -157,6 +160,8 @@ A pass means the resulting artifacts:
 ## Final Checks
 
 - Can the runtime model succeed without seeing the development conversation?
+- Does the `Intent Check` make the prompt's purpose, inputs, output, non-goals, and misunderstanding risk obvious to the user?
+- If the `Intent Check` is uncertain in a way that changes the prompt boundary, did you ask before finalizing?
 - Does every included sentence have a clear runtime owner?
 - Are safety, refusal, escalation, and uncertainty constraints explicit?
 - Are added safety or domain rules grounded in evidence, or clearly marked as assumptions?

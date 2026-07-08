@@ -2,9 +2,16 @@
 
 Use these headings in this order unless the user explicitly asks for raw prompt text only.
 
-Start directly with `## Boundary Summary`. Do not add a preface such as "I'll apply the skill."
+Start directly with `## Intent Check`. Do not add a preface such as "I'll apply the skill."
 
 ```md
+## Intent Check
+- Goal:
+- Uses:
+- Outputs:
+- Must not:
+- Main risk if misunderstood:
+
 ## Boundary Summary
 - LLM call:
 - Runtime job:
@@ -54,3 +61,4 @@ Notes:
 - Keep the ledger compact. Include contested or high-risk facts first.
 - Do a contradiction scan before returning: instructions, variable notes, and output contract must not disagree.
 - Check that each ledger `Final handling` claim is actually reflected in the returned artifact.
+- If `Intent Check` reveals material ambiguity, ask for confirmation before finalizing the prompt.
