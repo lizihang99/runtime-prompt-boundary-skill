@@ -1,4 +1,4 @@
 interface:
-  display_name: "Runtime Prompt Boundary"
-  short_description: "隔离开发背景，保住安全约束，净化运行时提示词"
-  default_prompt: "Use $runtime-prompt-boundary to design or edit this project's runtime prompt, preserve safety constraints, and keep development background out of the runtime prompt."
+  display_name: "Agent-Written Prompt Boundary"
+  short_description: "约束 agent 为软件内大模型调用编写的提示词边界"
+  default_prompt: "Use $agent-written-prompt-boundary to design or edit the product LLM prompt written during software development, preserving safety constraints and keeping development context out of the runtime prompt."

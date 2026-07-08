@@ -1,17 +1,17 @@
 ---
-name: runtime-prompt-boundary
-description: Use when implementing or editing an LLM call inside a real software feature and the conversation mixes product context, prompt text, examples, schemas, or implementation detail that must be routed to the right runtime artifact instead of pasted into the prompt.
+name: agent-written-prompt-boundary
+description: Use when an AI coding agent is implementing or editing a software feature that calls an LLM and must write or revise that product prompt without mixing development discussion, implementation detail, sample data, or unsupported assumptions into the runtime prompt.
 ---
 
-# Runtime Prompt Boundary
+# Agent-Written Prompt Boundary
 
 ## Overview
 
-Prompt work here is information routing, not prompt inflation. Development context may shape the prompt, but each fact must land in the cheapest artifact that preserves its runtime effect: rule, variable, example, schema, eval case, implementation note, or exclusion.
+When a coding agent implements a software feature that calls an LLM, it may also write the product prompt for that call. This skill keeps that agent-written prompt bounded: development context may shape the design, but each fact must land in the cheapest artifact that preserves its runtime effect.
 
 ## When to Use
 
-- adding or editing a real LLM call in a product feature
+- adding or editing a product LLM call while implementing a software feature
 - turning mixed product, UX, architecture, and prompt discussion into runtime artifacts
 - shrinking a prompt that has absorbed too much project backstory
 - aligning prompt text with downstream schemas, parsers, tools, or UI consumers
