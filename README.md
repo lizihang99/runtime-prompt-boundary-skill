@@ -6,7 +6,9 @@ When an AI coding agent builds a software feature that calls an LLM, it may also
 
 当你用 AI agent 开发软件时，agent 有时会顺手写产品里调用大模型的 prompt。
 
-这个 skill 解决的就是这件事：**让 agent 分清哪些信息该写进真正发给大模型的 prompt，哪些只是开发过程里的背景、实现细节、示例数据、测试用例或临时猜测。**
+这个 skill 主要防止一件事：**agent 为了“更完整”，把开发讨论、业务背景、实现方案、样例数据，或没有证据的字段/枚举/安全规则，一股脑塞进产品运行时 prompt。**
+
+它会让 agent 先分清楚：哪些信息该写进真正发给大模型的 prompt，哪些只是开发过程里的背景、实现细节、示例数据、测试用例或临时猜测。
 
 它不是普通的“帮你润色 prompt”。它更像一个边界检查器：
 
@@ -16,8 +18,6 @@ When an AI coding agent builds a software feature that calls an LLM, it may also
 - 只是在开发时用来验证的例子，放到测试或 eval case
 - 还没被需求、代码或 schema 证明的想法，放到 `proposed-assumption`
 - 对运行时模型没用、甚至会污染判断的内容，移出 prompt
-
-这样可以避免 agent 为了“更完整”，把开发讨论、业务背景、实现方案、样例数据或没有证据的字段/枚举/安全规则，一股脑塞进产品运行时 prompt。
 
 ## Why This Exists
 
