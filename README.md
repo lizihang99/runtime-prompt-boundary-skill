@@ -1,6 +1,6 @@
 # Agent-Written Prompt Boundary
 
-When you use an AI coding agent to build software, the agent may not only write code; it may also write the prompt for a product LLM call.
+When you use Codex or another AI coding agent to build software, the agent may not only write code; it may also write the prompt for a product LLM call.
 
 This skill prevents a common failure: the agent tries to make that prompt look "complete" by stuffing it with development discussion, business background, implementation plans, sample data, or unsupported fields, enums, and safety rules.
 
@@ -19,7 +19,7 @@ It is not a generic prompt-polishing tool. It is a boundary checker for product 
 
 ## 中文简介
 
-当你用 AI agent 开发软件时，它可能不只是写代码，还会顺手为产品里的大模型调用写 prompt。
+当你用 Codex 这类 AI coding agent 开发软件时，它可能不只是写代码，还会顺手为产品里的大模型调用写 prompt。
 
 这个 skill 主要防止一种常见跑偏：**agent 为了让 prompt 看起来“更完整”，把开发讨论、业务背景、实现方案、样例数据，甚至没有证据支持的字段、枚举和安全规则，一股脑塞进产品运行时 prompt。**
 
@@ -38,7 +38,7 @@ It is not a generic prompt-polishing tool. It is a boundary checker for product 
 
 ## Why This Exists
 
-Coding agents often see more context than the product LLM should ever see. When the code includes an LLM call, the agent may blur three different audiences:
+Codex and other coding agents often see more context than the product LLM should ever see. When the code includes an LLM call, the agent may blur three different audiences:
 
 - the human developer explaining the feature
 - the coding agent implementing the feature

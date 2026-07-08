@@ -1,13 +1,13 @@
 ---
 name: agent-written-prompt-boundary
-description: Use when an AI coding agent is implementing or editing a software feature that calls an LLM and must write or revise that product prompt without mixing development discussion, implementation detail, sample data, or unsupported assumptions into the runtime prompt.
+description: Use when Codex or another AI coding agent is implementing or editing a software feature that calls an LLM and must write or revise that product prompt without mixing development discussion, implementation detail, sample data, or unsupported assumptions into the runtime prompt.
 ---
 
 # Agent-Written Prompt Boundary
 
 ## Overview
 
-When a coding agent implements a software feature that calls an LLM, it may also write the product prompt for that call. This skill keeps that agent-written prompt bounded: development context may shape the design, but each fact must land in the cheapest artifact that preserves its runtime effect.
+When Codex or another coding agent implements a software feature that calls an LLM, it may also write the product prompt for that call. This skill keeps that agent-written prompt bounded: development context may shape the design, but each fact must land in the cheapest artifact that preserves its runtime effect.
 
 ## When to Use
 
