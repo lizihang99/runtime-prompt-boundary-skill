@@ -1,6 +1,21 @@
 # Agent-Written Prompt Boundary
 
-When an AI coding agent builds a software feature that calls an LLM, it may also write the prompt for that product LLM call. This skill helps the agent keep that prompt clean: only the information the product model needs at runtime goes into the prompt.
+When you use an AI coding agent to build software, the agent may not only write code; it may also write the prompt for a product LLM call.
+
+This skill prevents a common failure: the agent tries to make that prompt look "complete" by stuffing it with development discussion, business background, implementation plans, sample data, or unsupported fields, enums, and safety rules.
+
+A product runtime prompt is the text your software actually sends to the LLM. It is not the same thing as the requirements, notes, code plan, examples, or temporary guesses the coding agent used while building the feature.
+
+This skill makes the agent route information first:
+
+- rules the product model must follow every time go into the prompt
+- data that changes on each call becomes runtime variables
+- structures downstream code must parse become output contracts
+- examples used only to check behavior become tests or eval cases
+- useful ideas without evidence go to `proposed-assumption`
+- context that does not help the model run is kept out of the prompt
+
+It is not a generic prompt-polishing tool. It is a boundary checker for product prompts written by coding agents.
 
 ## 中文简介
 
@@ -23,13 +38,13 @@ When an AI coding agent builds a software feature that calls an LLM, it may also
 
 ## Why This Exists
 
-Coding agents are good at turning discussion into code. But when the code includes an LLM call, the agent may blur three different audiences:
+Coding agents often see more context than the product LLM should ever see. When the code includes an LLM call, the agent may blur three different audiences:
 
 - the human developer explaining the feature
 - the coding agent implementing the feature
 - the product LLM that will receive the runtime prompt
 
-Those audiences need different information. A fact that helps the coding agent may be noise, leakage, or policy drift for the product model.
+Those audiences need different information. A fact that helps the coding agent may become noise, leakage, or policy drift for the product model.
 
 This skill forces the agent to route information instead of pasting everything into the prompt.
 
