@@ -4,9 +4,19 @@ A Codex skill for designing product runtime prompts without leaking development 
 
 ## 中文简介
 
-这是一个用于设计和审查产品运行时提示词的 Codex skill。它解决的问题是：开发过程中会混入需求背景、产品叙事、架构讨论、示例数据、下游 schema、实现细节和临时假设，但这些内容不应该被原样塞进运行时 prompt。
+这是一个帮你写和检查运行时 prompt 的 Codex skill。
 
-这个 skill 会把每条信息分配到正确位置：稳定运行时规则、动态变量、输出契约、few-shot 示例、评测用例、实现备注、建议性假设或直接排除。重点是防止模型/代理“好心发明”未被证实的 JSON schema、枚举值、字段、政策触发器或安全规则。
+它的目标很简单：**别把开发时聊的背景、实现细节、示例数据和临时猜测，直接塞进真正给模型看的 prompt。**
+
+它会帮你判断一段信息到底该放哪里：
+
+- 该进 prompt 的，压成清楚的运行时规则
+- 每次调用才有的数据，变成运行时变量
+- 下游代码要解析的内容，写成输出契约
+- 只是猜测或建议的东西，放到 `proposed-assumption`
+- 没用或会污染模型的内容，直接排除
+
+它特别防一种常见问题：代理为了“更完整”，擅自发明 JSON schema、枚举值、字段、安全触发条件或业务规则。
 
 The core idea is simple: prompt work is information routing. Every fact should land in the cheapest artifact that preserves its value:
 
